@@ -1,0 +1,33 @@
+app:
+    restart: always
+    env_file: .env
+    build: server
+    expose:
+        - 5000
+    ports:
+        - 5000
+    volumes:
+        - ./server:/usr/src/app
+        - /usr/src/app/static
+    links:
+        - mongodb
+    command: /usr/local/bin/gunicorn -w 2 -b :5000 app:app
+
+nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+        - 80:80
+    volumes:
+        - /www/static
+    volumes_from:
+        - app
+    links:
+        - app:app
+
+mongodb:
+  image: mongo
+  expose:
+    - 27017
+  ports:
+    - 27017
