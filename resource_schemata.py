@@ -1,8 +1,12 @@
 CODE_SCHEMA = {
-    'github__ME-ICA__tedana': {
-        'id_type': 'github',
-        'scores': ['commits', 'issues', 'lines'],
+    'github/ME-ICA__tedana': {
+        'id_type': 'orcid',
+        'scores': ['count'],
     },
+    'github/neurostuff__NiMARE': {
+        'id_type': 'orcid',
+        'scores': ['count'],
+    }
 }
 
 DATA_SCHEMA = {
