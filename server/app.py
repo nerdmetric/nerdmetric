@@ -9,10 +9,14 @@ How do we want this to work?
     -   PUT users == other accounts (e.g., GitHub) requires other OAuth
 -   Resources and their contribution scores are extracted regularly and
     automatically
-    - Resource contributions must be publicly accessible by ORCID
+    -   Resource contributions must be publicly accessible by ORCID
+        (or other authorized IDs)
 -   Resources' contribution scores can be retrieved, but not edited, with API
     calls
-    - No authentication required for GET calls
+    -   No authentication required for GET calls
+
+The server just needs to authenticate IDs from select resources
+(e.g., ORCID, GitHub) and allow the public (and frontend) to GET contributions.
 """
 import os
 
