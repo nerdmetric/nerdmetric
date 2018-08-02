@@ -1,3 +1,7 @@
+"""
+Looks up contributions for a users, grabbing from database, which is split into
+three app types: 'code', 'data', and 'resources'.
+"""
 import pandas as pd
 import json
 

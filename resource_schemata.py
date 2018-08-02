@@ -1,3 +1,8 @@
+"""
+Defines schemata (app names, associated id types, and associated scores) for
+the three app types: 'code', 'data', and 'resource'.
+"""
+
 CODE_SCHEMA = {
     'github/ME-ICA__tedana': {
         'id_type': 'orcid',
