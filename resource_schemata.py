@@ -26,6 +26,10 @@ RESOURCE_SCHEMA = {
         'id_type': 'orcid',
         'scores': ['score'],
     },
+    'publons': {
+        'id_type': 'orcid',
+        'scores': ['merit', 'editor_merit'],
+    },
     'other': {
         'id_type': 'other',
         'scores': ['test'],
