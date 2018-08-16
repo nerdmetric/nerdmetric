@@ -1,3 +1,7 @@
+"""
+Pull contribution info for whitelisted GitHub repositories using pygithub,
+GitHub IDs, and ORCIDs.
+"""
 import os.path as op
 from time import sleep
 import numpy as np

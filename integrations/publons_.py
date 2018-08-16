@@ -1,9 +1,11 @@
-import os.path as op
-from time import sleep
-import numpy as np
-import pandas as pd
-import requests
+"""
+Pull Publons contribution info using API and ORCIDs.
+"""
 import json
+import os.path as op
+
+import requests
+import pandas as pd
 
 with open('/Users/tsalo/Documents/credentials/publons', 'r') as fo:
     token = fo.read().strip()
