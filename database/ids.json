@@ -1,18 +1,22 @@
 {
     "0000-0001-9813-3167": {
+        "name": "Taylor Salo",
         "github": "tsalo",
         "orcid": "0000-0001-9813-3167"
     },
     "0000-0002-7796-8795": {
+        "name": "Katherine Bottenhorn",
         "github": "62442katieb",
         "orcid": "0000-0002-7796-8795",
         "other": "kbott"
     },
     "0000-0003-1358-196X": {
+        "name": "Elizabeth DuPre",
         "github": "emdupre",
         "orcid": "0000-0003-1358-196X"
     },
     "0000-0002-6091-4037": {
+        "name": "Matthew Sutherland",
         "github": "masuther",
         "orcid": "0000-0002-6091-4037"
     }

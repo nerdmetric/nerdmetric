@@ -11,6 +11,10 @@ CODE_SCHEMA = {
     'github/neurostuff__NiMARE': {
         'id_type': 'orcid',
         'scores': ['count'],
+    },
+    'github/akeshavan__brainspell-neo-frontend': {
+        'id_type': 'orcid',
+        'scores': ['count'],
     }
 }
 
@@ -29,9 +33,5 @@ RESOURCE_SCHEMA = {
     'publons': {
         'id_type': 'orcid',
         'scores': ['merit', 'editor_merit'],
-    },
-    'other': {
-        'id_type': 'other',
-        'scores': ['test'],
     },
 }

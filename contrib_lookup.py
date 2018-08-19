@@ -13,7 +13,7 @@ with open('database/ids.json', 'r') as fo:
 
 
 def get_app_contributions(id_, app_name, columns):
-    df = pd.read_csv('database/{0}.csv'.format(app_name), index_col='id')
+    df = pd.read_csv('database/contributions/{0}.csv'.format(app_name), index_col='id')
     if id_ not in df.index:
         return {}
     else:
@@ -63,3 +63,41 @@ def get_contributions(orcid):
             contribs['resources'][app] = {t: 0 for t in contrib_types}
 
     return contribs
+
+
+def merge_contributions():
+    orcids = IDS.keys()
+    df = pd.DataFrame(index=orcids)
+
+    # Code first
+    for app in CODE_SCHEMA.keys():
+        temp_df = pd.read_csv('database/contributions/{0}.csv'.format(app),
+                              index_col='id')
+        temp_df = temp_df[CODE_SCHEMA[app]['scores']]
+        col_prefix = 'code_____' + app.replace('/', '___') + '____'
+        temp_df.columns = [col_prefix + col for col in temp_df.columns]
+        df = df.join(temp_df, how='outer')
+
+    # Data next
+    for app in DATA_SCHEMA.keys():
+        temp_df = pd.read_csv('database/contributions/{0}.csv'.format(app),
+                              index_col='id')
+        temp_df = temp_df[DATA_SCHEMA[app]['scores']]
+        col_prefix = 'data_____' + app.replace('/', '___') + '____'
+        temp_df.columns = [col_prefix + col for col in temp_df.columns]
+        df = df.join(temp_df, how='outer')
+
+    # Resources last
+    for app in RESOURCE_SCHEMA.keys():
+        temp_df = pd.read_csv('database/contributions/{0}.csv'.format(app),
+                              index_col='id')
+        temp_df = temp_df[RESOURCE_SCHEMA[app]['scores']]
+        col_prefix = 'resource_____' + app.replace('/', '___') + '____'
+        temp_df.columns = [col_prefix + col for col in temp_df.columns]
+        df = df.join(temp_df, how='outer')
+
+    df.to_csv('all_contributions.csv', index=True, index_label='orcid')
+
+
+if __name__ == '__main__':
+    merge_contributions()
