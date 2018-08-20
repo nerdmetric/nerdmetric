@@ -2,8 +2,10 @@
 Looks up contributions for a users, grabbing from database, which is split into
 three app types: 'code', 'data', and 'resources'.
 """
-import pandas as pd
 import json
+import os.path as op
+
+import pandas as pd
 
 from resource_schemata import CODE_SCHEMA, DATA_SCHEMA, RESOURCE_SCHEMA
 
@@ -71,12 +73,14 @@ def merge_contributions():
 
     # Code first
     for app in CODE_SCHEMA.keys():
-        temp_df = pd.read_csv('database/contributions/{0}.csv'.format(app),
-                              index_col='id')
-        temp_df = temp_df[CODE_SCHEMA[app]['scores']]
-        col_prefix = 'code_____' + app.replace('/', '___') + '____'
-        temp_df.columns = [col_prefix + col for col in temp_df.columns]
-        df = df.join(temp_df, how='outer')
+        f = 'database/contributions/{0}.csv'.format(app)
+        if op.isfile(f):
+            temp_df = pd.read_csv(f,
+                                  index_col='id')
+            temp_df = temp_df[CODE_SCHEMA[app]['scores']]
+            col_prefix = 'code_____' + app.replace('/', '___') + '____'
+            temp_df.columns = [col_prefix + col for col in temp_df.columns]
+            df = df.join(temp_df, how='outer')
 
     # Data next
     for app in DATA_SCHEMA.keys():

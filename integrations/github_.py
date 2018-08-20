@@ -26,6 +26,9 @@ def pull_contributors(repo, usernames):
     # Load contributions from GitHub
     r = github_user.get_user(owner).get_repo(repo_name)
     stats = r.get_stats_contributors()
+    if stats is None:
+        print('Pull failed for {0}'.format(repo))
+        return None
     c_list = []
     for contributor in stats:
         c_list.append([contributor.author.login, contributor.total])
