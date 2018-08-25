@@ -5,9 +5,7 @@ A lot of the current API code is taken from [here](https://github.com/nih-fmrif/
 
 
 ## Current setup
-- Front end:
-    - static/
-    - templates/
+- Front end: [tsalo/nerdmetric-frontend](https://github.com/tsalo/nerdmetric-frontend)
 - Database:
     - integrations/
     - database/
